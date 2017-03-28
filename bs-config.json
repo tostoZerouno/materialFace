@@ -1,5 +1,5 @@
 {
-  "port": 8080,
+  "https": true,
   "files": ["./src/**/*.{html,htm,css,js}"],
   "server": {
     "baseDir": "src",
