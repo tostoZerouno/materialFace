@@ -98,10 +98,9 @@ var VideoComponent = (function () {
                 //option.value = deviceInfo.deviceId;
                 if (deviceInfo.kind === 'videoinput') {
                     var newvalue = deviceInfo.deviceId;
-                    var newviewValue = deviceInfo.label || 'Camera ' + (videoSelect.length + 1);
+                    var newviewValue = deviceInfo.label || 'Camera ' + (component.cams.length + 1);
                     var option = { value: newvalue, viewValue: newviewValue };
                     component.cams.push(option);
-                    var select = document.getElementsByName("videoSelect")[0];
                 }
             }
         }

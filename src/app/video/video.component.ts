@@ -108,10 +108,10 @@ export class VideoComponent implements OnInit {
         //option.value = deviceInfo.deviceId;
         if (deviceInfo.kind === 'videoinput') {
           let newvalue = deviceInfo.deviceId;
-          let newviewValue = deviceInfo.label || 'Camera ' + (videoSelect.length + 1);
+          let newviewValue = deviceInfo.label || 'Camera ' + (component.cams.length + 1);
           var option = { value: newvalue, viewValue: newviewValue };
           component.cams.push(option);
-          let select = document.getElementsByName("videoSelect")[0];
+          //let select = document.getElementsByName("videoSelect")[0];
           //videoSelect.appendChild(option);
         }
       }

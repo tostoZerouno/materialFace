@@ -349,10 +349,15 @@ var PhotoComponent = (function () {
     };
     PhotoComponent.prototype.videoButtonClick = function (event) {
         this.clearCanvas();
-        console.log(event);
+        this.onResize();
+        console.log("EVENT " + event);
         if (event === "stop") {
             this.enableCapture = false;
-        } /*else{
+        }
+        else {
+            this.ngAfterViewInit();
+        }
+        /*else{
           this.enableCapture=true;
           this.evaluateAge();
         }*/

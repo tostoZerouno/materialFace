@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-photo',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./photo.component.css']
 })
 export class PhotoComponent implements OnInit {
+
   age = "Clicca sull'immagine per cominciare";
   description = "no description";
   enableCapture = false;
@@ -381,12 +382,16 @@ export class PhotoComponent implements OnInit {
     return final;
   }
 
-  videoButtonClick(event: any) {
+  videoButtonClick(event: String) {
     this.clearCanvas();
-    console.log(event);
+    this.onResize();
+    // console.log("EVENT "+event);
     if (event === "stop") {
       this.enableCapture = false;
-    }/*else{
+    } else {
+      this.ngAfterViewInit();
+    }
+    /*else{
       this.enableCapture=true;
       this.evaluateAge();
     }*/
