@@ -19,10 +19,12 @@ export class VideoComponent implements OnInit {
 
   constructor() { }
 
-  selectSource() {
-    var videoSelect = (<HTMLSelectElement>document.getElementsByName("videoSelect")[0]);
-    var videoSource = videoSelect.value;
-    this.vid = "" + (videoSelect.value);
+  selectSource(source: any) {
+    console.log(source);
+    //var videoSelect = (<any>document.getElementsByName("videoSelect")[0]);
+    //console.log(videoSelect);
+    var videoSource = source;
+    this.vid = "" + (source);
     console.log("vid: " + this.vid);
     //var constraints  = { video: { deviceId: { exact: videoSource } } };
     var constraints = { video: { deviceId: videoSource } };
@@ -125,7 +127,5 @@ export class VideoComponent implements OnInit {
   ngOnInit() {
     this.enumerate();
   }
-
-
 
 }

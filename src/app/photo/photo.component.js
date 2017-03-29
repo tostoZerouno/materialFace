@@ -350,7 +350,7 @@ var PhotoComponent = (function () {
     PhotoComponent.prototype.videoButtonClick = function (event) {
         this.clearCanvas();
         this.onResize();
-        console.log("EVENT " + event);
+        // console.log("EVENT "+event);
         if (event === "stop") {
             this.enableCapture = false;
         }

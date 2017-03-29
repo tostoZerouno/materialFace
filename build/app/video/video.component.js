@@ -18,10 +18,12 @@ var VideoComponent = (function () {
         this.bottone = "Ferma il Video";
         this.icona = "pause";
     }
-    VideoComponent.prototype.selectSource = function () {
-        var videoSelect = document.getElementsByName("videoSelect")[0];
-        var videoSource = videoSelect.value;
-        this.vid = "" + (videoSelect.value);
+    VideoComponent.prototype.selectSource = function (source) {
+        console.log(source);
+        //var videoSelect = (<any>document.getElementsByName("videoSelect")[0]);
+        //console.log(videoSelect);
+        var videoSource = source;
+        this.vid = "" + (source);
         console.log("vid: " + this.vid);
         //var constraints  = { video: { deviceId: { exact: videoSource } } };
         var constraints = { video: { deviceId: videoSource } };
