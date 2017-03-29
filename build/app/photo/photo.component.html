@@ -1,0 +1,14 @@
+<h1 id="age">{{age}}</h1>
+<md-card>
+<div (window:resize)="onResize()"  (document:load)="onResize()">
+    <canvas id="videoCanvas" name="videoCanvas" class="videoCanvas" (click)="onClick()"></canvas>
+    <app-video (stop)="videoButtonClick($event)"></app-video>
+</div>
+<canvas name="canvas" id="canvas" style="display:none;"></canvas>
+<!--<button id="take" (click)="onClick()">Take a photo</button><br />-->
+<md-card-content>
+<p name="description">{{description}}</p>
+</md-card-content>
+</md-card>
+<p>{{log}}</p>
+<canvas id="testCanvas" style="display:none;"></canvas>

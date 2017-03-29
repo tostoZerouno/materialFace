@@ -12,8 +12,6 @@
     "build:e2e": "tsc -p e2e/",
     "serve": "lite-server -c=bs-config.json",
     "serve:http": "http-server build/",
-    "prestart": "npm run build && npm config set production true",
-    "preinstall": "npm config set production false",
     "start:dev": "concurrently \"npm run build:watch\" \"npm run lite\"",
     "start": "npm run serve:http",
     "lint": "tslint ./src/**/*.ts -t verbose"
