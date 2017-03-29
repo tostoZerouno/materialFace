@@ -8,7 +8,7 @@ import { PhotoComponent } from './photo/photo.component';
 import { VideoComponent } from './video/video.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, MaterialModule, HammerJS ],
+  imports:      [ BrowserModule, FormsModule, MaterialModule ],
   declarations: [ AppComponent, PhotoComponent, VideoComponent ],
   bootstrap:    [ AppComponent ]
 })

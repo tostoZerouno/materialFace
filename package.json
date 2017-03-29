@@ -13,7 +13,7 @@
     "serve": "lite-server -c=bs-config.json",
     "serve:http": "http-server build/",
     "prestart": "npm run build",
-    "preinstall": "",
+    "preinstall": "npm install -g http-server",
     "start:dev": "concurrently \"npm run build:watch\" \"npm run lite\"",
     "start": "npm run serve:http",
     "lint": "tslint ./src/**/*.ts -t verbose"
