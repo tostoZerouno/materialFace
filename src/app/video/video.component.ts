@@ -11,10 +11,10 @@ export class VideoComponent implements OnInit {
   @Output() stop: EventEmitter<string> = new EventEmitter<string>();
 
   videoSelect = (<HTMLSelectElement>document.getElementsByName("videoSelect")[0]);
-  cams : any[] = [];
+  cams: any[] = [];
   vid = {};
-  localstream : MediaStream;
-  bottone = "Ferma il Video"
+  localstream: MediaStream;
+  bottone = "Ferma il Video";
   icona = "pause";
 
   constructor() { }
@@ -50,7 +50,7 @@ export class VideoComponent implements OnInit {
     if (!_video.paused) {
       this.stopStream();
       this.bottone = "Avvia il Video";
-      this.icona="play_arrow";
+      this.icona = "play_arrow";
       this.stop.emit("stop");
     } else {
       this.startStream(constraints);
@@ -60,7 +60,7 @@ export class VideoComponent implements OnInit {
     }
   }
 
-  startStream(constraints : any) {
+  startStream(constraints: any) {
     let _video = this.video.nativeElement;
     /*let nav = <any>navigator;
     nav.getUserMedia = nav.getUserMedia || nav.mozGetUserMedia || nav.webkit.GetUserMedia;*/
@@ -73,7 +73,7 @@ export class VideoComponent implements OnInit {
           this.localstream = stream;
           _video.load();
 
-        })
+        });
     }
   }
 
@@ -98,7 +98,7 @@ export class VideoComponent implements OnInit {
       .then(gotDevices)
       .catch(errorCallback);
     const videoSelect = (<HTMLSelectElement>document.getElementsByName("videoSelect")[0]);
-    
+
 
     function gotDevices(deviceInfos: any) {
       for (var i = 0; i !== deviceInfos.length; ++i) {
@@ -109,7 +109,7 @@ export class VideoComponent implements OnInit {
         if (deviceInfo.kind === 'videoinput') {
           let newvalue = deviceInfo.deviceId;
           let newviewValue = deviceInfo.label || 'Camera ' + (videoSelect.length + 1);
-          var option = {value : newvalue, viewValue : newviewValue };
+          var option = { value: newvalue, viewValue: newviewValue };
           component.cams.push(option);
           let select = document.getElementsByName("videoSelect")[0];
           //videoSelect.appendChild(option);

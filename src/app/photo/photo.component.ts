@@ -19,9 +19,11 @@ export class PhotoComponent implements OnInit {
     const SIRE = "Michele Bersini";
     //const SIRE = "Tommaso Tosi";
     const component = this;
-    this.age = this.enableCapture ? "Cercando...(clicca sull'immagine per mettere in pausa)" : "In pausa(clicca sull'immagine per ricominciare)";
+    const c1 = "Cercando...(clicca sull'immagine per mettere in pausa)";
+    const c2 = "In pausa(clicca sull'immagine per ricominciare)";
+    this.age = this.enableCapture ? c1 : c2;
     if (this.enableCapture) {
-      var faceIds : String[] = [];
+      var faceIds: String[] = [];
       const video = <any>document.getElementsByTagName('video')[0];
       this.log = "video";
       const canvas = <any>document.getElementsByName('canvas')[0];
@@ -55,7 +57,7 @@ export class PhotoComponent implements OnInit {
       img.onload = function () {
         testCanvas.getContext('2d').drawImage(img, 0, 0);
         //component.log= ""+window.orientation;
-      }
+      };
 
       component.log += "->draw";
 
@@ -107,11 +109,11 @@ export class PhotoComponent implements OnInit {
                 "sadness": "triste",
                 "surprise": "sorpreso",
                 "libero": "libero professionista"
-              }
+              };
               if (name === SIRE) {
                 age = "Senza Età";
                 scores.libero = 1000;
-                name = "Mio Sire"
+                name = "Mio Sire";
               }
 
               const rect = element.faceRectangle;
@@ -123,7 +125,7 @@ export class PhotoComponent implements OnInit {
               if (isNaN(age)) {
                 text = age;
               } else {
-                text = age + " anni, "
+                text = age + " anni, ";
               }
               //var text = age + " anni, ";// +
 
@@ -131,8 +133,8 @@ export class PhotoComponent implements OnInit {
               top += 1.3 * fs;
 
 
-              var max = Math.max.apply(null, Object.keys(scores).map(function (x) { return scores[x] }));
-              text = (Object.keys(scores).filter(function (x) { return scores[x] == max; })[0]);
+              var max = Math.max.apply(null, Object.keys(scores).map(function (x) { return scores[x]; }));
+              text = (Object.keys(scores).filter(function (x) { return scores[x] === max; })[0]);
               ctx.fillText(emotionMapping[text], left, top);
               top += 1.3 * fs;
 
@@ -263,8 +265,8 @@ export class PhotoComponent implements OnInit {
         xhrface.setRequestHeader('Ocp-Apim-Subscription-Key', "6e2715cbea564f4f95f9a097e935e8c7");
 
         xhrface.onreadystatechange = function () {
-          if (xhrface.readyState == 4) {
-            if (xhrface.status == 200) {
+          if (xhrface.readyState === 4) {
+            if (xhrface.status === 200) {
               //var resp = JSON.parse(xhrface.response);
               //console.log(this);
               var resp = JSON.parse(xhrface.response);
@@ -273,7 +275,7 @@ export class PhotoComponent implements OnInit {
               reject(new Error('fail'));
             }
           }
-        }
+        };
         xhrface.send(blob);
       });
   }
@@ -287,8 +289,8 @@ export class PhotoComponent implements OnInit {
       xhremotion.setRequestHeader('content-type', 'application/octet-stream');
       xhremotion.setRequestHeader('Ocp-Apim-Subscription-Key', "81f079954302459e904d8c98d06263b1");
       xhremotion.onreadystatechange = function () {
-        if (xhremotion.readyState == 4) {
-          if (xhremotion.status == 200) {
+        if (xhremotion.readyState === 4) {
+          if (xhremotion.status === 200) {
             //console.log(this);
             var resp = JSON.parse(xhremotion.response);
             resolve(resp);
@@ -296,9 +298,9 @@ export class PhotoComponent implements OnInit {
             reject(new Error('fail'));
           }
         }
-      }
+      };
       xhremotion.send(blob);
-    })
+    });
   }
 
 
@@ -313,8 +315,8 @@ export class PhotoComponent implements OnInit {
       xhrvision.setRequestHeader('Ocp-Apim-Subscription-Key', "b10fb5b057fe4f9cbeac59dcf0f5727f");
 
       xhrvision.onreadystatechange = function () {
-        if (xhrvision.readyState == 4) {
-          if (xhrvision.status == 200) {
+        if (xhrvision.readyState === 4) {
+          if (xhrvision.status === 200) {
             //console.log(this);
             var resp = JSON.parse(xhrvision.response);
             //console.log(resp.description.captions[0].text);
@@ -323,9 +325,9 @@ export class PhotoComponent implements OnInit {
             console.log(xhrvision.status);
           }
         }
-      }
+      };
       xhrvision.send(blob);
-    })
+    });
   }
   dataURItoBlob(dataURI: String) {
     var byteString = atob(dataURI.split(',')[1]);
@@ -341,7 +343,7 @@ export class PhotoComponent implements OnInit {
 
   ngAfterViewInit() {
     var interval = setInterval(() => {
-      this.onResize()
+      this.onResize();
       const video = <any>document.getElementsByTagName('video')[0];
       console.log("gira");
       if (video.height > 0) {
@@ -382,7 +384,7 @@ export class PhotoComponent implements OnInit {
   videoButtonClick(event: any) {
     this.clearCanvas();
     console.log(event);
-    if (event == "stop") {
+    if (event === "stop") {
       this.enableCapture = false;
     }/*else{
       this.enableCapture=true;
@@ -419,8 +421,8 @@ export class PhotoComponent implements OnInit {
       xhrface.setRequestHeader('Ocp-Apim-Subscription-Key', "6e2715cbea564f4f95f9a097e935e8c7");
 
       xhrface.onreadystatechange = function () {
-        if (xhrface.readyState == 4) {
-          if (xhrface.status == 200) {
+        if (xhrface.readyState === 4) {
+          if (xhrface.status === 200) {
             var resp = JSON.parse(xhrface.response);
             var count = 0;
             //console.log(resp);
@@ -434,7 +436,7 @@ export class PhotoComponent implements OnInit {
                   if (face.faceId === element.faceId) {
                     face.name = r['name'];
                   }
-                  if (count == resp.length) {
+                  if (count === resp.length) {
                     resolve(resp);
                   }
                 });
@@ -449,10 +451,10 @@ export class PhotoComponent implements OnInit {
           }
         }
 
-        if (xhrface.status == 400) {
+        if (xhrface.status === 400) {
           resolve({});
         }
-      }
+      };
       xhrface.send(JSON.stringify(postData));
     });
   }
@@ -474,8 +476,8 @@ export class PhotoComponent implements OnInit {
       xhrface.setRequestHeader('Ocp-Apim-Subscription-Key', "6e2715cbea564f4f95f9a097e935e8c7");
 
       xhrface.onreadystatechange = function () {
-        if (xhrface.readyState == 4) {
-          if (xhrface.status == 200) {
+        if (xhrface.readyState === 4) {
+          if (xhrface.status === 200) {
             var resp = JSON.parse(xhrface.response);
             //console.log(resp);
             resolve(resp);
@@ -483,7 +485,7 @@ export class PhotoComponent implements OnInit {
             resolve(xhrface.status);
           }
         }
-      }
+      };
       xhrface.send();
     });
 
@@ -499,8 +501,7 @@ export class PhotoComponent implements OnInit {
       || navigator.userAgent.match(/Windows Phone/i)
     ) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
