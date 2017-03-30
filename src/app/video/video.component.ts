@@ -11,7 +11,7 @@ export class VideoComponent implements OnInit {
   @Output() stop: EventEmitter<string> = new EventEmitter<string>();
 
   videoSelect = (<HTMLSelectElement>document.getElementsByName("videoSelect")[0]);
-  cams: any[] = [];
+  public cams: any[] = [];
   vid = {};
   localstream: MediaStream;
   bottone = "Ferma il Video";

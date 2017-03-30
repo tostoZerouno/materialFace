@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var video_component_1 = require("../video/video.component");
 var PhotoComponent = (function () {
     function PhotoComponent() {
         this.age = "Clicca sull'immagine per cominciare";
@@ -17,6 +18,7 @@ var PhotoComponent = (function () {
         this.log = "";
         this.faces = {};
         this.faceToPerson = {};
+        this.cams = [];
     }
     PhotoComponent.prototype.evaluateAge = function () {
         var _this = this;
@@ -188,6 +190,7 @@ var PhotoComponent = (function () {
         var tCanvas = document.getElementById('testCanvas');
         tCanvas.width = video.videoWidth;
         tCanvas.height = video.videoHeight;
+        this.cams = this.videoComponent.cams;
         //this.log = video.height + "x" + video.width + " c:" + canvas.height + "x" + canvas.width;
     };
     PhotoComponent.prototype.analyzeImage = function (stream) {
@@ -462,8 +465,15 @@ var PhotoComponent = (function () {
             return false;
         }
     };
+    PhotoComponent.prototype.selectSource = function (source) {
+        this.videoComponent.selectSource(source);
+    };
     return PhotoComponent;
 }());
+__decorate([
+    core_1.ViewChild(video_component_1.VideoComponent),
+    __metadata("design:type", video_component_1.VideoComponent)
+], PhotoComponent.prototype, "videoComponent", void 0);
 PhotoComponent = __decorate([
     core_1.Component({
         selector: 'app-photo',

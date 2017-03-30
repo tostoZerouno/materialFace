@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
+import { VideoComponent } from '../video/video.component';
 
 @Component({
   selector: 'app-photo',
@@ -13,6 +14,10 @@ export class PhotoComponent implements OnInit {
   log = "";
   faces = {};
   faceToPerson = {};
+  public cams: any[] = [];
+
+  @ViewChild(VideoComponent)
+  private videoComponent: VideoComponent;
 
   constructor() { }
 
@@ -203,6 +208,8 @@ export class PhotoComponent implements OnInit {
     const tCanvas = <any>document.getElementById('testCanvas');
     tCanvas.width = video.videoWidth;
     tCanvas.height = video.videoHeight;
+
+    this.cams = this.videoComponent.cams;
 
     //this.log = video.height + "x" + video.width + " c:" + canvas.height + "x" + canvas.width;
   }
@@ -509,6 +516,10 @@ export class PhotoComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  public selectSource(source: any) {
+    this.videoComponent.selectSource(source);
   }
 
 }
