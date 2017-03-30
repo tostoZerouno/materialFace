@@ -2,7 +2,7 @@
     <md-menu #appMenu="mdMenu" >
        <!-- <button md-menu-item> Cose1 </button>
         <button md-menu-item> Cose2 </button>-->
-        <button md-menu-item *ngFor="let btn of menubtns" [value]="btn.value" (click)=selectSource($event)> {{btn.viewValue}} </button>
+        <button md-menu-item *ngFor="let btn of menubtns" [value]="btn.value" (click)=selectSource(btn.value)> {{btn.viewValue}} </button>
     </md-menu>
 
     <button md-icon-button [mdMenuTriggerFor]="appMenu" (click)="updateMenu()">
