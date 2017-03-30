@@ -519,9 +519,9 @@ export class PhotoComponent implements OnInit {
   }
 
   public selectSource(source: any) {
-    this.videoComponent.selectSource(source);
     this.log = source;
-    console.log(source);
+    console.log("AAAAAAAAA" + source);
+    this.videoComponent.selectSource(source);
   }
 
 }

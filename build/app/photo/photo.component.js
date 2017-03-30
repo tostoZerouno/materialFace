@@ -466,6 +466,8 @@ var PhotoComponent = (function () {
         }
     };
     PhotoComponent.prototype.selectSource = function (source) {
+        this.log = source;
+        console.log("AAAAAAAAA" + source);
         this.videoComponent.selectSource(source);
     };
     return PhotoComponent;
