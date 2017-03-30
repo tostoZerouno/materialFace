@@ -17,7 +17,7 @@ export class PhotoComponent implements OnInit {
   public cams: any[] = [];
 
   @ViewChild(VideoComponent)
-  private videoComponent: VideoComponent;
+  public videoComponent: VideoComponent;
 
   constructor() { }
 

@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { PhotoComponent } from './photo/photo.component';
 
 @Component({
-  selector: 'my-app',
+  selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -14,7 +14,7 @@ export class AppComponent {
   menubtns: any[] = [];
 
   @ViewChild(PhotoComponent)
-  private photoComponent: PhotoComponent;
+  public photoComponent: PhotoComponent;
 
   onClick() {
     this.btnState = !this.btnState;
