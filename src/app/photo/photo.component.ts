@@ -52,7 +52,8 @@ export class PhotoComponent implements OnInit {
       this.log += "->context";
       const size = this.dataURItoBlob(canvas.toDataURL('image/jpeg', 1)).size;
       this.log += "->size";
-      const rapp = 153600 / size;
+      const rapp = Math.min(153600 / size,1);
+      //const rapp=1;
       this.log += "->rapp";
       this.log += size + " " + rapp;
       //console.log(size*rapp);
