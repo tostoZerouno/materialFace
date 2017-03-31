@@ -10,12 +10,12 @@ export class VideoComponent implements OnInit {
 
   @Output() stop: EventEmitter<string> = new EventEmitter<string>();
 
-  videoSelect = (<HTMLSelectElement>document.getElementsByName("videoSelect")[0]);
   public cams: any[] = [];
   vid = {};
   localstream: MediaStream;
   bottone = "Ferma il Video";
   icona = "pause";
+  selectValue = "";
 
   constructor() { }
 

@@ -1,6 +1,6 @@
 <video #video width="640" height="480" autoplay></video>
 <br>
-<md-select name="videoSelect" placeholder="webCam" (ngModelChange)="selectSource($event)" class="input-form">
+<md-select name="videoSelect" placeholder="webCam" [(ngModel)]="selectValue" (ngModelChange)="selectSource($event)" class="input-form">
      <md-option *ngFor="let cam of cams" [value]="cam.value" [disabled]="cam.disabled">
         {{ cam.viewValue }}
       </md-option>
