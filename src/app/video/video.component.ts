@@ -9,6 +9,7 @@ import { Component, OnInit, ViewChild, Output, EventEmitter } from '@angular/cor
 export class VideoComponent implements OnInit {
 
   @Output() stop: EventEmitter<string> = new EventEmitter<string>();
+  @Output() ready: EventEmitter<string> = new EventEmitter<string>();
 
   public cams: any[] = [];
   vid = {};
@@ -63,6 +64,7 @@ export class VideoComponent implements OnInit {
   }
 
   startStream(constraints: any) {
+    let component = this;
     let _video = this.video.nativeElement;
     /*let nav = <any>navigator;
     nav.getUserMedia = nav.getUserMedia || nav.mozGetUserMedia || nav.webkit.GetUserMedia;*/
@@ -74,6 +76,9 @@ export class VideoComponent implements OnInit {
           console.log(_video.src);
           this.localstream = stream;
           _video.load();
+          _video.onplaying = function () {
+            component.ready.emit("ready");
+          }
 
         });
     }

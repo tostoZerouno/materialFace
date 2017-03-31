@@ -196,6 +196,7 @@ export class PhotoComponent implements OnInit {
   }
 
   onResize() {
+    console.log("resize");
     const video = <any>document.getElementsByTagName('video')[0];
     const canvas = <any>document.getElementsByName('videoCanvas')[0];
     video.width = parent.innerWidth / 2;
@@ -350,7 +351,7 @@ export class PhotoComponent implements OnInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
-    var interval = setInterval(() => {
+   /* var interval = setInterval(() => {
       this.onResize();
       const video = <any>document.getElementsByTagName('video')[0];
       console.log("gira");
@@ -358,7 +359,7 @@ export class PhotoComponent implements OnInit {
         clearInterval(interval);
         console.log("stop");
       }
-    }, 100);
+    }, 100);*/
   }
 
   addEmotionToFace(faces: any, emotions: any) {
@@ -395,8 +396,6 @@ export class PhotoComponent implements OnInit {
     // console.log("EVENT "+event);
     if (event === "stop") {
       this.enableCapture = false;
-    } else {
-      this.ngAfterViewInit();
     }
     /*else{
       this.enableCapture=true;
